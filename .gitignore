@@ -53,4 +53,15 @@ dependency-reduced-pom.xml
 .project
 .settings/
 
-.rebel.*
+**/rebel.xml
+
+#compile file
+#编译文件
+*.class
+
+#包文件
+*.jar
+*.war
+*.zip
+*.rar
+*.tar.gz
