@@ -11,6 +11,7 @@
         <module>gee-dao</module>
         <module>gee-service</module>
         <module>gee-web</module>
+        <module>gee-manager</module>
     </modules>
     <packaging>pom</packaging>
     <name>gee-parent</name>
@@ -86,6 +87,12 @@ spring-boot-dependencies一样之地替换的版本；
             <dependency>
                 <groupId>com.gld.gee</groupId>
                 <artifactId>gee-service</artifactId>
+                <version>${project.gld.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.gld.gee</groupId>
+                <artifactId>gee-manager</artifactId>
                 <version>${project.gld.version}</version>
             </dependency>
 
