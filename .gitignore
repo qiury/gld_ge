@@ -18,6 +18,7 @@ target/
 *.iws
 *.iml
 *.ipr
+*.bak
 
 ### NetBeans ###
 /nbproject/private/
@@ -29,3 +30,29 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Created by .ignore support plugin (hsz.mobi)
+.gitignore
+
+# Operating System Files
+
+*.DS_Store
+Thumbs.db
+*.sw?
+.#*
+*#
+*~
+*.sublime-*
+
+# Build Artifacts
+.gradle/
+build/
+target/
+bin/
+dependency-reduced-pom.xml
+
+# Eclipse Project Files
+
+.classpath
+.project
+.settings/
