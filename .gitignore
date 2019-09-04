@@ -59,6 +59,9 @@ dependency-reduced-pom.xml
 #编译文件
 *.class
 
+# Log file
+*.log
+
 #包文件
 *.jar
 *.war
