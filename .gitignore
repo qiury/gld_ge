@@ -31,9 +31,6 @@ build/
 ### VS Code ###
 .vscode/
 
-# Created by .ignore support plugin (hsz.mobi)
-.gitignore
-
 # Operating System Files
 
 *.DS_Store
@@ -52,7 +49,8 @@ bin/
 dependency-reduced-pom.xml
 
 # Eclipse Project Files
-
 .classpath
 .project
 .settings/
+
+.rebel.*
