@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>gee-parent</artifactId>
+        <groupId>com.gld.gee</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>gee-web</artifactId>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>com.gld.gee</groupId>
+            <artifactId>gee-service</artifactId>
+        </dependency>
+        <!-- SpringBoot Web容器 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--common-lang3-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <!--
+            当使用ApiModuleProperty注释时，对数字类型如果没有指定默认值，就会采用""作为默认值，这样在打开在线文档界面时
+            后台就会出现类型转换异常。
+            解决方案：
+            1. 显示指定ApiModuleProperty中的example属性的默认值；
+            2. 排除1.5.20版本swagger-models，引入1.5.22版本的swagger-models。
+            ，-->
+            <exclusions>
+                <exclusion>
+                    <groupId>io.swagger</groupId>
+                    <artifactId>swagger-models</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-models</artifactId>
+            <version>1.5.22</version>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.caspar-chen</groupId>
+            <artifactId>swagger-ui-layer</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.xiaoymin</groupId>
+            <artifactId>swagger-bootstrap-ui</artifactId>
+            <version>1.8.7</version>
+        </dependency>
+
+        <!--
+          引入热部署jar包
+          springboot-devtools方式的热部署在功能上有限制。
+            1. 如在方法内的修改可以实现热部署，但是新增的方法或者修改方法参数之后热部署是不生效的。
+            2. 相对于JRebel，springboot-devtools方式热部署的速度可能有点慢.
+            3. 额外引入的依赖实际上生产环境并不需要，开发者引入后容易误提交到线上
+
+         -->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-devtools</artifactId>-->
+<!--            &lt;!&ndash;-->
+<!--            optional=true,依赖不会传递，该项目依赖devtools；-->
+<!--            之后依赖该项目的项目如果想要使用devtools，需要重新引入.-->
+<!--            &ndash;&gt;-->
+<!--            <optional>true</optional>-->
+<!--        </dependency>-->
+
+    </dependencies>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+        <!-- 使用IDEA开发工具时，需要加上该resources配置，解决webapp/资源目录无效的问题 -->
+        <resources>
+            <resource>
+                <directory>src/main/webapp</directory>
+                <!--编译的时候把webapp文件放到resources下,必须要放在此目录下才能被访问到 -->
+                <targetPath>META-INF/resources</targetPath>
+                <includes>
+                    <include>**/**</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+
+</project>
